@@ -40,6 +40,73 @@ public class JavaListTest {
 		ListADT<String> data = makeEmptyList();
 		Assert.assertEquals(0, data.size());
 		Assert.assertEquals(true, data.isEmpty());
+		
+	}
+	public void testSetI() {
+		ListADT<String> input3 = makeEmptyList();
+		input3.addBack("1");
+		input3.addBack("2");
+		input3.addBack("3");
+		input3.addBack("4");
+		input3.setIndex(0, "4");
+		Assert.assertEquals(input3.getIndex(0), "4");
+	}
+	
+	public void testAddI() {
+		ListADT<String> setup = makeEmptyList();
+		setup.addBack("A");
+		setup.addBack("B");
+		setup.addBack("C");
+		setup.addBack("D");
+		setup.addIndex(0, "Z");
+		Assert.assertEquals(setup.getIndex(0),"Z");
+	}
+	
+	public void testATBack() {
+		ListADT<String> behind = makeEmptyList();
+		behind.addBack("C");//Alternatively, you can check the back index to see if it was the 4th one.
+		behind.addFront("B");
+		behind.addFront("A");
+		behind.addFront("Z");
+		behind.addFront("Y");//Since this is the last value added to the front, you can check the index
+		//behind it to see if it got added.
+		Assert.assertEquals(behind.getIndex(4), "C");
+	}
+	
+	public void testRemoveB() {
+		ListADT<String> backside = makeEmptyList();
+		backside.addFront("1");
+		backside.addFront("2");
+		backside.addFront("3");
+		backside.addFront("4");
+		backside.addFront("5");
+		backside.addFront("6");
+		backside.removeBack();
+		Assert.assertEquals(backside.getIndex(0),"1" );
+	}
+	
+	public void testRemoveI() {
+		ListADT<String> removal = makeEmptyList();
+		removal.addFront("1");
+		removal.addFront("2");
+		removal.addFront("4");
+		removal.addFront("8");
+		removal.addFront("16");
+		removal.addFront("32");
+		removal.removeIndex(3);
+		Assert.assertEquals(removal.getIndex(3), "8");
+	}
+	
+	public void testRemoveF() {
+		ListADT<String> takeout = makeEmptyList();
+		takeout.addFront("Z");
+		takeout.addFront("Y");
+		takeout.addFront("X");
+		takeout.addFront("W");
+		takeout.addFront("1");
+		takeout.addFront("2");
+		takeout.removeFront();
+		Assert.assertEquals(takeout.getIndex(0), "2");
 	}
 	
 	@Test(expected=EmptyListError.class)
@@ -47,6 +114,7 @@ public class JavaListTest {
 		ListADT<String> data = makeEmptyList();
 		data.removeFront();
 	}
+
 	
 	@Test(expected=EmptyListError.class)
 	public void testRemoveBackCrash() {
