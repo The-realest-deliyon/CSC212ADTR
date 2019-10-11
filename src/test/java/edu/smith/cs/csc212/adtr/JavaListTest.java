@@ -82,7 +82,7 @@ public class JavaListTest {
 		backside.addFront("5");
 		backside.addFront("6");
 		backside.removeBack();
-		Assert.assertEquals(backside.getIndex(0),"1" );
+		Assert.assertEquals(backside.getIndex(0),"2" );
 	}
 	
 	public void testRemoveI() {
@@ -106,7 +106,7 @@ public class JavaListTest {
 		takeout.addFront("1");
 		takeout.addFront("2");
 		takeout.removeFront();
-		Assert.assertEquals(takeout.getIndex(0), "2");
+		Assert.assertEquals(takeout.getIndex(0), "1");
 	}
 	
 	@Test(expected=EmptyListError.class)
@@ -219,7 +219,7 @@ public class JavaListTest {
 		data.addIndex(-1, "the");
 	}
 	
-	// TODO write some tests for setIndex.
+
 	
 	@Test
 	public void testToJava() {
